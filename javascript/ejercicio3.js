@@ -1,26 +1,17 @@
 function lanzarDado() {
-  let numero = Math.floor(Math.random() * 6) + 1;
-  return numero;
+  return Math.floor(Math.random() * 6) + 1;
 }
 
-function simularLanzamiento() {
+let conteoSumas = new Array(11).fill(0);
+
+for (let i = 0; i < 50; i++) {
   let dado1 = lanzarDado();
   let dado2 = lanzarDado();
   let suma = dado1 + dado2;
-  return suma;
+  conteoSumas[suma - 2]++;
 }
 
-function mostrarResultados(alazar) {
-  for (let i = 0; i < alazar.length; i++) {
-    console.log(`Suma: ${i + 2} - Apariciones: ${alazar[i]}`);
-  }
+console.log("Apariciones de cada suma:");
+for (let i = 2; i <= 12; i++) {
+  console.log(`Suma ${i}: ${conteoSumas[i - 2]} veces`);
 }
-
-const repeticiones = 50;
-let resultados = new Array(11).fill(0);
-
-for (let i = 0; i < repeticiones; i++) {
-  let suma = simularLanzamiento();
-}
-
-mostrarResultados(resultados);
